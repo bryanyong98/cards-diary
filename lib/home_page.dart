@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:cardsdiary/components/back_view.dart';
 import 'package:flutter/material.dart';
 import 'package:cardsdiary/components/front_view.dart';
 
@@ -49,7 +52,20 @@ class _MyHomePageState extends State<HomePage> {
 
             // month cards
             Expanded(
-              child: FrontView(), ),
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: PageView.builder(
+                  controller: PageController(
+                    initialPage: 0,
+                    viewportFraction: 0.78,
+                  ),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 12, // for 12 months
+                  itemBuilder: (_, i) => FrontView(),
+
+                ),
+              ),
+              ),
 
             const SizedBox(height: 30.0),
             // action button
